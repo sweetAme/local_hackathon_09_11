@@ -1,6 +1,6 @@
 import sqlite3
 
-DATABASE_NAME = 'database/database.db'
+DATABASE_NAME = 'database.db'
 
 def db_connect(func):
     def wrapper(*args, **kwargs):
@@ -21,11 +21,16 @@ def test_create(cursor):
     cursor.execute('INSERT INTO Users VALUES (\'jayse\', \'1337\')')
 
 @db_connect
-def test_select(username, cursor):
+def select_user(username, cursor):
     cursor.execute("SELECT * FROM Users WHERE username = \"{}\";".format(username))
     return cursor.fetchall()
+
+@db_connect
+def reg_user(username, password, cursor):
+    cursor.execute('INSERT INTO Users VALUES (\'{}\', \'{}\')'.format(username, password))
 
 @db_connect
 def test_select_all(cursor):
     cursor.execute("SELECT * FROM Users;")
     return cursor.fetchall()
+

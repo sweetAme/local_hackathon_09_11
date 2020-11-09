@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.vscode/
 
 # Virtual Environment
 .env
@@ -9,3 +10,6 @@ env/
 
 # Database 
 *.db
+
+# Config file
+config.py

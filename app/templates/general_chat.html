@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}General Chatroom{% endblock %}
+
+{% block content %}
+<script type=text/javascript>
+async function postData(url = 'http://localhost:5000/general', data = {}) {
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'include',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+</script>
+
+<div style="margin: 10px;">
+    <form action="" method="POST">
+        <input type="text" class="message" placeholder="Message" id="message">
+
+        <button onclick="postData()">Send</button>
+    </form>
+</div>
+{% endblock %}
