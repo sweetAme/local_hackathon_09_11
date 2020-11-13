@@ -66,6 +66,7 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/general', methods = ['GET', 'POST'])
+@login_required
 def general():
     messages = []
 

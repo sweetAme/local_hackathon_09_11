@@ -8,4 +8,5 @@ def login_required(func):
         else:
             flash('Access denied, please log in', 'danger')
             return redirect(url_for('login'))
+    wrapper.__name__ = func.__name__
     return wrapper
